@@ -1,5 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { isAxiosError } from 'axios';
 
 import { Input } from '@/shared/ui/input';
 import { Button } from '@/shared/ui/button';
@@ -10,7 +11,6 @@ import { TOAST } from '@/shared/lib/toast';
 import { signUpSchema, TSignUpPostFetchParams } from '../model/schema/sign-up-schema';
 import { userSignUpPostFetch } from '../api/userSignUpPostFetch';
 import { useUserStore } from '../model/store/useUserStore';
-import { isAxiosError } from 'axios';
 
 export default function SignUpForm() {
   const { toast } = useToast();
@@ -70,8 +70,8 @@ export default function SignUpForm() {
           <p className="text-red-600 py-1">{errors.password?.message}</p>
         </div>
       </div>
-      <Button className="mt-2" type="submit" disabled={!isValid || isSubmitting}>
-        회원가입
+      <Button className="mt-2 w-full" type="submit" disabled={!isValid || isSubmitting}>
+        회원가입 하기
       </Button>
     </form>
   );
